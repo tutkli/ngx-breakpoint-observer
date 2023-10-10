@@ -15,9 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "ngx-breakpoint-observer": [
-        "libs/ngx-breakpoint-observer/src/index.ts"
-      ],
+      "ngx-breakpoint-observer": ["libs/ngx-breakpoint-observer/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

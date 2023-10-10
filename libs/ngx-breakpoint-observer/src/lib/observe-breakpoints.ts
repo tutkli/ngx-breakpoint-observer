@@ -1,7 +1,7 @@
 import { computed, type Signal } from '@angular/core';
-import {Breakpoints} from "./breakpoints";
-import {increaseWithUnit} from "./increase-with-unit";
-import {observeMediaQuery} from "./observe-media-query";
+import { Breakpoints } from './breakpoints';
+import { increaseWithUnit } from './increase-with-unit';
+import { observeMediaQuery } from './observe-media-query';
 
 /**
  * Reactive viewport breakpoints
