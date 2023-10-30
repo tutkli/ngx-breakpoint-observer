@@ -5,5 +5,5 @@
 /* You can add global styles to this file, and also import other style files */
 
 pre {
-  @apply p-4 rounded-lg text-sm sm:text-base;
+  @apply rounded-lg p-4 text-sm sm:text-base;
 }

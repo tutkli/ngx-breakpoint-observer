@@ -11,15 +11,19 @@ npm install ngx-breakpoint-observer
 ```
 
 ## Usage
+
 ```ts
-import { breakpointsTailwind, observeBreakpoints } from 'ngx-breakpoint-observer';
+import {
+  breakpointsTailwind,
+  observeBreakpoints,
+} from 'ngx-breakpoint-observer';
 
 const breakpoints = observeBreakpoints(breakpointsTailwind);
 
-const smAndLarger = breakpoints.greaterOrEqual('sm') // sm and larger
-const largerThanSm = breakpoints.greater('sm') // only larger than sm
-const lgAndSmaller = breakpoints.smallerOrEqual('lg') // lg and smaller
-const smallerThanLg = breakpoints.smaller('lg') // only smaller than lg
+const smAndLarger = breakpoints.greaterOrEqual('sm'); // sm and larger
+const largerThanSm = breakpoints.greater('sm'); // only larger than sm
+const lgAndSmaller = breakpoints.smallerOrEqual('lg'); // lg and smaller
+const smallerThanLg = breakpoints.smaller('lg'); // only smaller than lg
 ```
 
 ```ts
