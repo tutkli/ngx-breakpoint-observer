@@ -11,7 +11,7 @@ const buttonVariants = cva(
         ghost: 'hover:gray-200 hover:text-gray-800',
       },
       size: {
-        default: 'h-10 py-2 px-4',
+        default: 'py-2 px-4',
       },
     },
     defaultVariants: {
