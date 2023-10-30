@@ -1,4 +1,4 @@
-import { effect, type Signal, signal } from '@angular/core';
+import { effect, type Signal, signal, untracked } from '@angular/core';
 
 /**
  * Reactive Media Query.
@@ -22,17 +22,18 @@ export function observeMediaQuery(query: string): Signal<boolean> {
   const update = () => {
     if (!isSupported()) return;
 
-    cleanup();
-
     mediaQuery = window.matchMedia(query);
-    matches.set(!!mediaQuery?.matches);
+    untracked(() => matches.set(!!mediaQuery?.matches));
 
     if (!mediaQuery) return;
 
     mediaQuery.addEventListener('change', update);
   };
 
-  effect(update, { allowSignalWrites: true });
+  effect(onCleanup => {
+    update();
+    onCleanup(() => cleanup());
+  });
 
   return matches.asReadonly();
 }
