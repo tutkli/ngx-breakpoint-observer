@@ -5,6 +5,7 @@
   "scripts": {
     "start:demo": "nx serve demo",
     "build": "nx run-many --target build --all --parallel=1",
+    "build:package": "nx build libs-ngx-breakpoint-observer",
     "prepare": "git config core.hookspath .githooks",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0",
     "test": "nx run-many --target test --all",
