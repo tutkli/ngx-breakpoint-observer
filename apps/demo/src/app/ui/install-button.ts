@@ -25,6 +25,4 @@ export class DemoInstallButton {
     clearTimeout(this.copyTimeout);
     this.copyTimeout = setTimeout(() => this.copied.set(false), 2500);
   }
-
-  protected readonly lucideCheck = lucideCheck;
 }

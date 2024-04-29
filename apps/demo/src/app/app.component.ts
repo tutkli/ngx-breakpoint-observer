@@ -26,12 +26,12 @@ import { DemoBreakpoint } from './ui/breakpoint';
           </p>
 
           <div>Current breakpoints: {{ current() | json }}</div>
-          <demo-breakpoint name="xs" [value]="xs" />
-          <demo-breakpoint name="sm" [value]="sm" />
-          <demo-breakpoint name="md" [value]="md" />
-          <demo-breakpoint name="lg" [value]="lg" />
-          <demo-breakpoint name="xl" [value]="xl" />
-          <demo-breakpoint name="2xl" [value]="xxl" />
+          <demo-breakpoint name="xs" [value]="xs()" />
+          <demo-breakpoint name="sm" [value]="sm()" />
+          <demo-breakpoint name="md" [value]="md()" />
+          <demo-breakpoint name="lg" [value]="lg()" />
+          <demo-breakpoint name="xl" [value]="xl()" />
+          <demo-breakpoint name="2xl" [value]="xxl()" />
         </div>
 
         <demo-snipped class="w-full" />
