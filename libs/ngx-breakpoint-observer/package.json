@@ -1,17 +1,15 @@
 {
   "name": "ngx-breakpoint-observer",
   "version": "1.1.0",
-  "peerDependencies": {
-    "@angular/common": "^16.0.0",
-    "@angular/core": "^16.0.0"
+  "description": "Angular reactive breakpoint observer based on Signals.",
+  "bugs": {
+    "url": "https://github.com/tutkli/ngx-breakpoint-observer/issues"
   },
-  "dependencies": {
-    "tslib": "^2.3.0"
-  },
-  "sideEffects": false,
+  "homepage": "https://github.com/tutkli/ngx-breakpoint-observer#readme",
   "repository": {
     "type": "git",
-    "url": "https://github.com/tutkli/ngx-breakpoint-observer"
+    "url": "https://github.com/tutkli/ngx-breakpoint-observer",
+    "directory": "libs/ngx-breakpoint-observer"
   },
   "keywords": [
     "angular",
@@ -25,8 +23,12 @@
     "url": "https://github.com/tutkli"
   },
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/tutkli/ngx-breakpoint-observer/issues"
+  "peerDependencies": {
+    "@angular/common": ">=16.0.0",
+    "@angular/core": ">=16.0.0"
   },
-  "homepage": "https://github.com/tutkli/ngx-breakpoint-observer#readme"
+  "dependencies": {
+    "tslib": "^2.3.0"
+  },
+  "sideEffects": false
 }
