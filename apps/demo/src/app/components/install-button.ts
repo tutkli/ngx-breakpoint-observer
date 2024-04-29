@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
 import { NgIcon, provideIcons } from '@ng-icons/core';
 import { lucideCheck, lucideCopy } from '@ng-icons/lucide';
-import { DemoButton } from './button.directive';
+import { DemoButton } from '../ui/button.directive';
 
 @Component({
   selector: 'demo-install-button',

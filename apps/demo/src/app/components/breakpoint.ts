@@ -4,12 +4,12 @@ import { input } from '@angular/core';
 @Component({
   selector: 'demo-breakpoint',
   standalone: true,
-  template: ` <div>
+  template: ` <p>
     {{ name() }}:
     <span [class]="value() ? 'text-green-500' : 'text-red-500'">
       {{ value() }}
     </span>
-  </div>`,
+  </p>`,
 })
 export class DemoBreakpoint {
   name = input.required<string>();

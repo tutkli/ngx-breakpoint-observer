@@ -5,10 +5,10 @@ import {
 } from 'ngx-breakpoint-observer';
 import { JsonPipe } from '@angular/common';
 import { provideIcons } from '@ng-icons/core';
-import { DemoSnipped } from './ui/snipped';
+import { DemoSnipped } from './components/snipped';
 import { simpleGithub } from '@ng-icons/simple-icons';
-import { DemoHeader } from './ui/header';
-import { DemoBreakpoint } from './ui/breakpoint';
+import { DemoHeader } from './components/header';
+import { DemoBreakpoint } from './components/breakpoint';
 
 @Component({
   standalone: true,

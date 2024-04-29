@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { DemoButton } from './button.directive';
+import { DemoButton } from '../ui/button.directive';
 import { DemoInstallButton } from './install-button';
 import { NgIcon, provideIcons } from '@ng-icons/core';
 import { simpleGithub } from '@ng-icons/simple-icons';
