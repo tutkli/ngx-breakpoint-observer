@@ -26,6 +26,7 @@ import { DemoBreakpoint } from './components/breakpoint';
           </p>
 
           <div>Current breakpoints: {{ current() | json }}</div>
+          <div>Active breakpoint: {{ active() }}</div>
           <demo-breakpoint name="xs" [value]="xs()" />
           <demo-breakpoint name="sm" [value]="sm()" />
           <demo-breakpoint name="md" [value]="md()" />
@@ -44,6 +45,7 @@ export class AppComponent {
   breakpoints = observeBreakpoints(breakpointsTailwind);
 
   current = this.breakpoints.current();
+  active = this.breakpoints.active();
   xs = this.breakpoints.smallerOrEqual('sm');
   sm = this.breakpoints.between('sm', 'md');
   md = this.breakpoints.between('md', 'lg');

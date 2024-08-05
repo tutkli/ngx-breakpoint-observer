@@ -45,6 +45,13 @@ export function observeBreakpoints<K extends string>(
     return observeMediaQuery(() => `(max-width: ${getValue(k)})`, options);
   };
 
+  function current() {
+    const points = Object.keys(breakpoints).map(
+      i => [i, greaterOrEqual(i as K)] as const
+    );
+    return computed(() => points.filter(([, v]) => v()).map(([k]) => k));
+  }
+
   const shortcutMethods = Object.keys(breakpoints).reduce((shortcuts, k) => {
     Object.defineProperty(shortcuts, k, {
       get: () =>
@@ -96,11 +103,14 @@ export function observeBreakpoints<K extends string>(
         `(min-width: ${getValue(a)}) and (max-width: ${getValue(b, -0.1)})`
       );
     },
-    current() {
-      const points = Object.keys(breakpoints).map(
-        i => [i, greaterOrEqual(i as K)] as const
+    current,
+    active() {
+      const breakpoints = current();
+      return computed(() =>
+        breakpoints().length === 0
+          ? ''
+          : breakpoints()[breakpoints().length - 1]
       );
-      return computed(() => points.filter(([, v]) => v()).map(([k]) => k));
     },
   });
 }

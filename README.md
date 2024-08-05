@@ -30,11 +30,16 @@ const smallerThanLg = breakpoints.smaller('lg'); // only smaller than lg
 import { observeBreakpoints } from 'ngx-breakpoint-observer';
 
 const breakpoints = observeBreakpoints({
+  mobile: 0, // optional
   tablet: 640,
   laptop: 1024,
   desktop: 1280,
 });
 
+// Can be 'mobile' or 'tablet' or 'laptop' or 'desktop'
+const activeBreakpoint = breakpoints.active();
+
+// true or false
 const laptop = breakpoints.between('laptop', 'desktop');
 ```
 
