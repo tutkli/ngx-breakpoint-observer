@@ -5,3 +5,4 @@
 export * from './lib/breakpoints';
 export * from './lib/observe-breakpoints';
 export * from './lib/observe-media-query';
+export * from './lib/types';

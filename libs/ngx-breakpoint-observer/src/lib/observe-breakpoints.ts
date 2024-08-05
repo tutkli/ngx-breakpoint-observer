@@ -1,7 +1,9 @@
 import { computed, type Signal } from '@angular/core';
 import { Breakpoints } from './breakpoints';
-import { increaseWithUnit } from './increase-with-unit';
+import { increaseWithUnit } from './utils/increase-with-unit';
 import { observeMediaQuery } from './observe-media-query';
+import { toValue } from './utils/to-value';
+import { MaybeSignalOrGetter } from './types';
 
 /**
  * Reactive viewport breakpoints
@@ -11,8 +13,8 @@ import { observeMediaQuery } from './observe-media-query';
 export function observeBreakpoints<K extends string>(
   breakpoints: Breakpoints<K>
 ) {
-  function getValue(k: K, delta?: number): string {
-    let v = breakpoints[k];
+  function getValue(k: MaybeSignalOrGetter<K>, delta?: number): string {
+    let v = breakpoints[toValue(k)];
 
     if (delta !== null && delta !== undefined) {
       v = increaseWithUnit(v, delta);
@@ -31,8 +33,8 @@ export function observeBreakpoints<K extends string>(
     return window.matchMedia(query).matches;
   }
 
-  const greaterOrEqual = (k: K): Signal<boolean> => {
-    return observeMediaQuery(`(min-width: ${getValue(k)})`);
+  const greaterOrEqual = (k: MaybeSignalOrGetter<K>): Signal<boolean> => {
+    return observeMediaQuery(() => `(min-width: ${getValue(k)})`);
   };
 
   const shortcutMethods = Object.keys(breakpoints).reduce((shortcuts, k) => {
@@ -45,34 +47,35 @@ export function observeBreakpoints<K extends string>(
   }, {} as Record<K, Signal<boolean>>);
 
   return Object.assign(shortcutMethods, {
-    greater(k: K) {
-      return observeMediaQuery(`(min-width: ${getValue(k, 0.1)})`);
+    greater(k: MaybeSignalOrGetter<K>) {
+      return observeMediaQuery(() => `(min-width: ${getValue(k, 0.1)})`);
     },
     greaterOrEqual,
-    smaller(k: K) {
-      return observeMediaQuery(`(max-width: ${getValue(k, -0.1)})`);
+    smaller(k: MaybeSignalOrGetter<K>) {
+      return observeMediaQuery(() => `(max-width: ${getValue(k, -0.1)})`);
     },
-    smallerOrEqual(k: K) {
-      return observeMediaQuery(`(max-width: ${getValue(k)})`);
+    smallerOrEqual(k: MaybeSignalOrGetter<K>) {
+      return observeMediaQuery(() => `(max-width: ${getValue(k)})`);
     },
-    between(a: K, b: K) {
+    between(a: MaybeSignalOrGetter<K>, b: MaybeSignalOrGetter<K>) {
       return observeMediaQuery(
-        `(min-width: ${getValue(a)}) and (max-width: ${getValue(b, -0.1)})`
+        () =>
+          `(min-width: ${getValue(a)}) and (max-width: ${getValue(b, -0.1)})`
       );
     },
-    isGreater(k: K) {
+    isGreater(k: MaybeSignalOrGetter<K>) {
       return match(`(min-width: ${getValue(k, 0.1)})`);
     },
-    isGreaterOrEqual(k: K) {
+    isGreaterOrEqual(k: MaybeSignalOrGetter<K>) {
       return match(`(min-width: ${getValue(k)})`);
     },
-    isSmaller(k: K) {
+    isSmaller(k: MaybeSignalOrGetter<K>) {
       return match(`(max-width: ${getValue(k, -0.1)})`);
     },
-    isSmallerOrEqual(k: K) {
+    isSmallerOrEqual(k: MaybeSignalOrGetter<K>) {
       return match(`(max-width: ${getValue(k)})`);
     },
-    isInBetween(a: K, b: K) {
+    isInBetween(a: MaybeSignalOrGetter<K>, b: MaybeSignalOrGetter<K>) {
       return match(
         `(min-width: ${getValue(a)}) and (max-width: ${getValue(b, -0.1)})`
       );
