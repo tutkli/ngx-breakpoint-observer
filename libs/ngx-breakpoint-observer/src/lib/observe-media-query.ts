@@ -1,15 +1,22 @@
 import { effect, type Signal, signal, untracked } from '@angular/core';
 import { toValue } from './utils/to-value';
-import { MaybeSignalOrGetter } from './types';
+import {
+  ConfigurableWindow,
+  defaultWindow,
+  MaybeSignalOrGetter,
+} from './types';
 
 /**
  * Reactive Media Query.
  *
  * @param query
+ * @param options
  */
 export function observeMediaQuery(
-  query: MaybeSignalOrGetter<string>
+  query: MaybeSignalOrGetter<string>,
+  options: ConfigurableWindow = {}
 ): Signal<boolean> {
+  const { window = defaultWindow } = options;
   const isSupported =
     window && 'matchMedia' in window && typeof window.matchMedia === 'function';
 
