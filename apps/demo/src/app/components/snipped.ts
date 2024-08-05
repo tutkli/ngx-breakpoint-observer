@@ -14,6 +14,7 @@ import { HighlightJsDirective } from 'ngx-highlight-js';
 breakpoints = observeBreakpoints(breakpointsTailwind);
 
 current = this.breakpoints.current();
+active = this.breakpoints.active();
 xs = this.breakpoints.smallerOrEqual('sm');
 sm = this.breakpoints.between('sm', 'md');
 md = this.breakpoints.between('md', 'lg');
