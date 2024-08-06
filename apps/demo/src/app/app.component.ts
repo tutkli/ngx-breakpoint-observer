@@ -1,14 +1,14 @@
+import { JsonPipe } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { provideIcons } from '@ng-icons/core';
+import { simpleGithub } from '@ng-icons/simple-icons';
 import {
   breakpointsTailwind,
   observeBreakpoints,
 } from 'ngx-breakpoint-observer';
-import { JsonPipe } from '@angular/common';
-import { provideIcons } from '@ng-icons/core';
-import { DemoSnipped } from './components/snipped';
-import { simpleGithub } from '@ng-icons/simple-icons';
-import { DemoHeader } from './components/header';
 import { DemoBreakpoint } from './components/breakpoint';
+import { DemoHeader } from './components/header';
+import { DemoSnipped } from './components/snipped';
 
 @Component({
   standalone: true,

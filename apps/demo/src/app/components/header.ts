@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { DemoButton } from '../ui/button.directive';
-import { DemoInstallButton } from './install-button';
 import { NgIcon, provideIcons } from '@ng-icons/core';
 import { simpleGithub } from '@ng-icons/simple-icons';
+import { DemoButton } from '../ui/button.directive';
+import { DemoInstallButton } from './install-button';
 
 @Component({
   selector: 'demo-header',
@@ -12,7 +12,8 @@ import { simpleGithub } from '@ng-icons/simple-icons';
   host: {
     class: 'flex w-full items-center justify-between gap-5',
   },
-  template: `<a
+  template: `
+    <a
       demoButton
       variant="ghost"
       href="https://github.com/tutkli/ngx-breakpoint-observer"
@@ -24,6 +25,7 @@ import { simpleGithub } from '@ng-icons/simple-icons';
 
     <div>
       <demo-install-button />
-    </div>`,
+    </div>
+  `,
 })
 export class DemoHeader {}

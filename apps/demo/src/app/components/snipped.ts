@@ -5,7 +5,8 @@ import { HighlightJsDirective } from 'ngx-highlight-js';
   selector: 'demo-snipped',
   standalone: true,
   imports: [HighlightJsDirective],
-  template: ` <textarea highlight-js [lang]="'typescript'">
+  template: `
+    <textarea highlight-js [lang]="'typescript'">
     import {
   breakpointsTailwind,
   observeBreakpoints
@@ -22,7 +23,8 @@ lg = this.breakpoints.between('lg', 'xl');
 xl = this.breakpoints.between('xl', '2xl');
 xxl = this.breakpoints.greaterOrEqual('2xl');
       </textarea
-  >`,
+    >
+  `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DemoSnipped {}

@@ -1,9 +1,13 @@
 import { computed, type Signal } from '@angular/core';
-import { Breakpoints, defaultWindow, ObserveBreakpointsOptions } from './types';
-import { increaseWithUnit } from './utils/increase-with-unit';
 import { observeMediaQuery } from './observe-media-query';
+import {
+  Breakpoints,
+  defaultWindow,
+  MaybeSignalOrGetter,
+  ObserveBreakpointsOptions,
+} from './types';
+import { increaseWithUnit } from './utils/increase-with-unit';
 import { toValue } from './utils/to-value';
-import { MaybeSignalOrGetter } from './types';
 
 /**
  * Reactive viewport breakpoints

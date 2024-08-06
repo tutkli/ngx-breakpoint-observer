@@ -8,10 +8,12 @@ import { DemoButton } from '../ui/button.directive';
   standalone: true,
   imports: [NgIcon, DemoButton],
   viewProviders: [provideIcons({ lucideCopy, lucideCheck })],
-  template: ` <button type="button" demoButton (click)="copyToClipboard()">
-    {{ cmd }}
-    <ng-icon [name]="copied() ? 'lucideCheck' : 'lucideCopy'" class="ml-2" />
-  </button>`,
+  template: `
+    <button type="button" demoButton (click)="copyToClipboard()">
+      {{ cmd }}
+      <ng-icon [name]="copied() ? 'lucideCheck' : 'lucideCopy'" class="ml-2" />
+    </button>
+  `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DemoInstallButton {

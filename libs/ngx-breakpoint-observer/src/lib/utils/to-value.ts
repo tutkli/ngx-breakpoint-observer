@@ -1,4 +1,3 @@
-import { Signal } from '@angular/core';
 import { MaybeSignalOrGetter } from '../types';
 
 /**

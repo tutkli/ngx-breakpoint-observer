@@ -1,6 +1,6 @@
 import { ApplicationConfig, importProvidersFrom } from '@angular/core';
-import { HighlightJsModule } from 'ngx-highlight-js';
 import { provideNgIconsConfig } from '@ng-icons/core';
+import { HighlightJsModule } from 'ngx-highlight-js';
 
 export const appConfig: ApplicationConfig = {
   providers: [
