@@ -13,10 +13,13 @@
         "outputPath": "dist/apps/demo",
         "index": "apps/demo/src/index.html",
         "main": "apps/demo/src/main.ts",
-        "polyfills": ["zone.js"],
+        "polyfills": [],
         "tsConfig": "apps/demo/tsconfig.app.json",
         "assets": ["apps/demo/src/favicon.ico", "apps/demo/src/assets"],
-        "styles": ["apps/demo/src/styles.css"],
+        "styles": [
+          "apps/demo/src/styles.css",
+          "node_modules/highlight.js/styles/github.min.css"
+        ],
         "scripts": []
       },
       "configurations": {

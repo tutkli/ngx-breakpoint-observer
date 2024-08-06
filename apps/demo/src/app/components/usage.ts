@@ -1,19 +1,19 @@
-# ngx-breakpoint-observer
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { CodeBlock } from './code-block';
 
-This library adds reactive breakpoint and media query methods based on Signals.
-
-The code is directly inspired by [VueUse](https://vueuse.org/).
-
-## Installation
-
-```shell
-npm install ngx-breakpoint-observer
-```
-
-## Usage
-
-```ts
-import {
+@Component({
+  selector: 'demo-usage',
+  standalone: true,
+  imports: [CodeBlock],
+  template: `
+    <h2>Usage</h2>
+    <demo-code-block [code]="usage1" />
+    <demo-code-block [code]="usage2" />
+  `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class Usage {
+  usage1 = `import {
   breakpointsTailwind,
   observeBreakpoints,
 } from 'ngx-breakpoint-observer';
@@ -29,11 +29,9 @@ export class AppComponent {
   largerThanSm = this.breakpoints.greater('sm'); // only larger than sm
   lgAndSmaller = this.breakpoints.smallerOrEqual('lg'); // lg and smaller
   smallerThanLg = this.breakpoints.smaller('lg'); // only smaller than lg
-}
-```
+}`;
 
-```ts
-import { observeBreakpoints } from 'ngx-breakpoint-observer';
+  usage2 = `import { observeBreakpoints } from 'ngx-breakpoint-observer';
 
 @Component({})
 export class AppComponent {
@@ -49,9 +47,5 @@ export class AppComponent {
 
   // true or false
   laptop = this.breakpoints.between('laptop', 'desktop');
+}`;
 }
-```
-
-## License
-
-[MIT License](https://github.com/tutkli/ngx-breakpoint-observer/blob/master/LICENSE)

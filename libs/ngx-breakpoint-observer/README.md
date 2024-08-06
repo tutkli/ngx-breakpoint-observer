@@ -18,24 +18,38 @@ import {
   observeBreakpoints,
 } from 'ngx-breakpoint-observer';
 
-const breakpoints = observeBreakpoints(breakpointsTailwind);
+@Component({})
+export class AppComponent {
+  breakpoints = observeBreakpoints(breakpointsTailwind);
 
-const smAndLarger = breakpoints.greaterOrEqual('sm'); // sm and larger
-const largerThanSm = breakpoints.greater('sm'); // only larger than sm
-const lgAndSmaller = breakpoints.smallerOrEqual('lg'); // lg and smaller
-const smallerThanLg = breakpoints.smaller('lg'); // only smaller than lg
+  reactiveStuff = signal<keyof typeof breakpointsTailwind>('sm');
+  isGreaterThanSignal = this.breakpoints.greaterOrEqual(this.reactiveStuff); // use signal without calling it!
+
+  smAndLarger = this.breakpoints.greaterOrEqual('sm'); // sm and larger
+  largerThanSm = this.breakpoints.greater('sm'); // only larger than sm
+  lgAndSmaller = this.breakpoints.smallerOrEqual('lg'); // lg and smaller
+  smallerThanLg = this.breakpoints.smaller('lg'); // only smaller than lg
+}
 ```
 
 ```ts
 import { observeBreakpoints } from 'ngx-breakpoint-observer';
 
-const breakpoints = observeBreakpoints({
-  tablet: 640,
-  laptop: 1024,
-  desktop: 1280,
-});
+@Component({})
+export class AppComponent {
+  breakpoints = observeBreakpoints({
+    mobile: 0, // optional
+    tablet: 640,
+    laptop: 1024,
+    desktop: 1280,
+  });
 
-const laptop = breakpoints.between('laptop', 'desktop');
+  // Can be 'mobile' or 'tablet' or 'laptop' or 'desktop'
+  activeBreakpoint = this.breakpoints.active();
+
+  // true or false
+  laptop = this.breakpoints.between('laptop', 'desktop');
+}
 ```
 
 ## License
