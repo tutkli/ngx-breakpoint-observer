@@ -1,11 +1,9 @@
-import { Breakpoints } from './types';
-
 /**
  * Breakpoints from Tailwind V3
  *
  * @see https://tailwindcss.com/docs/breakpoints
  */
-export const breakpointsTailwind: Breakpoints = {
+export const breakpointsTailwind = {
   sm: 640,
   md: 768,
   lg: 1024,
@@ -32,7 +30,7 @@ export const breakpointsBootstrap = {
  *
  * @see https://material.angular.io/cdk/layout/overview
  */
-export const breakpointsMaterial: Breakpoints = {
+export const breakpointsMaterial = {
   xsmall: 0,
   small: 600,
   medium: 960,
