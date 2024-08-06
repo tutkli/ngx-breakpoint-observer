@@ -7,3 +7,11 @@
 pre {
   @apply overflow-auto rounded-lg p-4 text-sm sm:text-base;
 }
+
+h1 {
+  @apply text-2xl font-bold sm:text-3xl;
+}
+
+h2 {
+  @apply mb-2 text-lg font-semibold sm:text-2xl;
+}

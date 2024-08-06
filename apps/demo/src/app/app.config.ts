@@ -1,12 +1,14 @@
-import { ApplicationConfig, importProvidersFrom } from '@angular/core';
-import { provideNgIconsConfig } from '@ng-icons/core';
-import { HighlightJsModule } from 'ngx-highlight-js';
+import {
+  ApplicationConfig,
+  provideExperimentalZonelessChangeDetection,
+} from '@angular/core';
+import { provideRouter, Routes } from '@angular/router';
+
+export const routes: Routes = [];
 
 export const appConfig: ApplicationConfig = {
   providers: [
-    importProvidersFrom(HighlightJsModule),
-    provideNgIconsConfig({
-      size: '1em',
-    }),
+    provideExperimentalZonelessChangeDetection(),
+    provideRouter(routes),
   ],
 };

@@ -1,31 +1,26 @@
-import { Component } from '@angular/core';
-import { NgIcon, provideIcons } from '@ng-icons/core';
-import { simpleGithub } from '@ng-icons/simple-icons';
-import { DemoButton } from '../ui/button.directive';
-import { DemoInstallButton } from './install-button';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { GitHubIcon } from './github-icon';
 
 @Component({
   selector: 'demo-header',
   standalone: true,
-  imports: [DemoButton, DemoInstallButton, NgIcon],
-  viewProviders: [provideIcons({ simpleGithub })],
+  imports: [GitHubIcon],
   host: {
-    class: 'flex w-full items-center justify-between gap-5',
+    class: 'flex flex-col w-full justify-center gap-5',
   },
   template: `
     <a
-      demoButton
-      variant="ghost"
+      class="w-fit"
       href="https://github.com/tutkli/ngx-breakpoint-observer"
       target="_blank"
       rel="noopener">
-      <ng-icon name="simpleGithub" size="2rem" />
+      <demo-github-icon />
       <span class="sr-only">Github</span>
     </a>
 
-    <div>
-      <demo-install-button />
-    </div>
+    <h1>ngx-breakpoint-observer</h1>
+    <p>Angular reactive breakpoint observer based on Signals.</p>
   `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class DemoHeader {}
+export class Header {}

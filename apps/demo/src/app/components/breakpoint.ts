@@ -1,4 +1,4 @@
-import { Component, input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 
 @Component({
   selector: 'demo-breakpoint',
@@ -11,8 +11,9 @@ import { Component, input } from '@angular/core';
       </span>
     </p>
   `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class DemoBreakpoint {
+export class Breakpoint {
   name = input.required<string>();
   value = input.required<boolean>();
 }
