@@ -2,6 +2,9 @@ import { Signal } from '@angular/core';
 
 export type Breakpoints<K extends string = string> = Record<K, number | string>;
 
+/**
+ * Maybe it's a signal, or a plain value, or a getter function
+ */
 export type MaybeSignalOrGetter<T> = T | Signal<T> | (() => T);
 
 export interface ConfigurableWindow {
@@ -22,7 +25,3 @@ export interface ObserveBreakpointsOptions extends ConfigurableWindow {
    */
   strategy?: 'min-width' | 'max-width';
 }
-
-export const isClient =
-  typeof window !== 'undefined' && typeof document !== 'undefined';
-export const defaultWindow = isClient ? window : undefined;
