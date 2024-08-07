@@ -1,10 +1,6 @@
 import { effect, type Signal, signal, untracked } from '@angular/core';
-import {
-  ConfigurableWindow,
-  defaultWindow,
-  MaybeSignalOrGetter,
-} from './types';
-import { toValue } from './utils/to-value';
+import { ConfigurableWindow, MaybeSignalOrGetter } from './types';
+import { defaultWindow, toValue } from './utils';
 
 /**
  * Reactive Media Query.
