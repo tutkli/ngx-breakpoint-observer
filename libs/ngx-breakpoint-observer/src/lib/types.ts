@@ -5,7 +5,7 @@ export type Breakpoints<K extends string = string> = Record<K, number | string>;
 export type MaybeSignalOrGetter<T> = T | Signal<T> | (() => T);
 
 export interface ConfigurableWindow {
-  /*
+  /**
    * Specify a custom `window` instance, e.g. working with iframes or in testing environments.
    */
   window?: Window;
