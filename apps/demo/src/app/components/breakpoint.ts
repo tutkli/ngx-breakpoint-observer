@@ -2,7 +2,6 @@ import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 
 @Component({
   selector: 'demo-breakpoint',
-  standalone: true,
   template: `
     <p>
       {{ name() }}:

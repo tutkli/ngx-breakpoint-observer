@@ -3,7 +3,6 @@ import { CodeBlock } from './code-block';
 
 @Component({
   selector: 'demo-usage',
-  standalone: true,
   imports: [CodeBlock],
   template: `
     <h2>Usage</h2>

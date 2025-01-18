@@ -8,7 +8,6 @@ import { Breakpoint } from './breakpoint';
 
 @Component({
   selector: 'demo-demo',
-  standalone: true,
   imports: [Breakpoint, JsonPipe],
   template: `
     <h2>Demo</h2>

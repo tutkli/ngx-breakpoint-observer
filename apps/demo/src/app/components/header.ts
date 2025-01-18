@@ -3,7 +3,6 @@ import { GitHubIcon } from './github-icon';
 
 @Component({
   selector: 'demo-header',
-  standalone: true,
   imports: [GitHubIcon],
   host: {
     class: 'flex flex-col w-full justify-center gap-5',

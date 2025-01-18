@@ -18,7 +18,6 @@ hljs.registerLanguage('xml', xml);
 
 @Component({
   selector: 'demo-code-block',
-  standalone: true,
   template: `
     <div class="group relative">
       <button
