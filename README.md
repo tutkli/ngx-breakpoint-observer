@@ -15,12 +15,12 @@ npm install ngx-breakpoint-observer
 ```ts
 import {
   breakpointsTailwind,
-  observeBreakpoints,
+  injectBreakpoints,
 } from 'ngx-breakpoint-observer';
 
 @Component({})
 export class AppComponent {
-  breakpoints = observeBreakpoints(breakpointsTailwind);
+  breakpoints = injectBreakpoints(breakpointsTailwind);
 
   reactiveStuff = signal<keyof typeof breakpointsTailwind>('sm');
   isGreaterThanSignal = this.breakpoints.greaterOrEqual(this.reactiveStuff); // use signal without calling it!
@@ -33,11 +33,11 @@ export class AppComponent {
 ```
 
 ```ts
-import { observeBreakpoints } from 'ngx-breakpoint-observer';
+import { injectBreakpoints } from 'ngx-breakpoint-observer';
 
 @Component({})
 export class AppComponent {
-  breakpoints = observeBreakpoints({
+  breakpoints = injectBreakpoints({
     mobile: 0, // optional
     tablet: 640,
     laptop: 1024,

@@ -14,12 +14,12 @@ import { CodeBlock } from './code-block';
 export class Usage {
   usage1 = `import {
   breakpointsTailwind,
-  observeBreakpoints,
+  injectBreakpoints,
 } from 'ngx-breakpoint-observer';
 
 @Component({})
 export class AppComponent {
-  breakpoints = observeBreakpoints(breakpointsTailwind);
+  breakpoints = injectBreakpoints(breakpointsTailwind);
 
   reactiveStuff = signal<keyof typeof breakpointsTailwind>('sm');
   isGreaterThanSignal = this.breakpoints.greaterOrEqual(this.reactiveStuff); // use signal without calling it!
@@ -30,11 +30,11 @@ export class AppComponent {
   smallerThanLg = this.breakpoints.smaller('lg'); // only smaller than lg
 }`;
 
-  usage2 = `import { observeBreakpoints } from 'ngx-breakpoint-observer';
+  usage2 = `import { injectBreakpoints } from 'ngx-breakpoint-observer';
 
 @Component({})
 export class AppComponent {
-  breakpoints = observeBreakpoints({
+  breakpoints = injectBreakpoints({
     mobile: 0, // optional
     tablet: 640,
     laptop: 1024,
