@@ -2,7 +2,7 @@ import { JsonPipe } from '@angular/common';
 import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
 import {
   breakpointsTailwind,
-  observeBreakpoints,
+  injectBreakpoints,
 } from 'ngx-breakpoint-observer';
 import { Breakpoint } from './breakpoint';
 
@@ -31,7 +31,7 @@ import { Breakpoint } from './breakpoint';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Demo {
-  breakpoints = observeBreakpoints(breakpointsTailwind);
+  breakpoints = injectBreakpoints(breakpointsTailwind);
 
   reactiveStuff = signal<keyof typeof breakpointsTailwind>('sm');
   isGreaterThanSignal = this.breakpoints.greaterOrEqual(this.reactiveStuff);
