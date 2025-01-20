@@ -1,21 +1,19 @@
-import { effect, type Signal, signal, untracked } from '@angular/core';
+import { DestroyRef, inject, signal, Signal } from '@angular/core';
 import { ConfigurableWindow, MaybeSignalOrGetter } from './types';
 import { defaultWindow, toValue } from './utils';
 
 /**
- * **@deprecated** Use `injectMediaQuery` instead.
- *
- * This function will be removed in version `4.0.0`.
- *
  * Reactive Media Query.
  *
- * @param query
- * @param options
+ * @param query Media query as a signal or getter or string.
+ * @param options Configuration options for window.
+ * @returns A read-only signal indicating whether the media query matches.
  */
-export function observeMediaQuery(
+export function injectMediaQuery(
   query: MaybeSignalOrGetter<string>,
   options: ConfigurableWindow = {}
 ): Signal<boolean> {
+  const destroyRef = inject(DestroyRef);
   const { window = defaultWindow } = options;
   const isSupported =
     window && 'matchMedia' in window && typeof window.matchMedia === 'function';
@@ -27,28 +25,22 @@ export function observeMediaQuery(
     matches.set(event.matches);
   };
 
-  const cleanup = () => {
+  if (isSupported) {
+    mediaQuery = window.matchMedia(toValue(query));
+    matches.set(mediaQuery.matches);
+    if ('addEventListener' in mediaQuery)
+      mediaQuery.addEventListener('change', handler);
+    // @ts-expect-error deprecated API
+    else mediaQuery.addListener(handler);
+  }
+
+  destroyRef.onDestroy(() => {
     if (!mediaQuery) return;
 
     if ('removeEventListener' in mediaQuery)
       mediaQuery.removeEventListener('change', handler);
     // @ts-expect-error deprecated API
     else mediaQuery.removeListener(handler);
-  };
-
-  effect(onCleanup => {
-    if (!isSupported) return;
-
-    mediaQuery = window.matchMedia(toValue(query));
-
-    if ('addEventListener' in mediaQuery)
-      mediaQuery.addEventListener('change', handler);
-    // @ts-expect-error deprecated API
-    else mediaQuery.addListener(handler);
-
-    untracked(() => matches.set(!!mediaQuery?.matches));
-
-    onCleanup(cleanup);
   });
 
   return matches.asReadonly();

@@ -6,7 +6,6 @@ import { Installation } from './components/installation';
 import { Usage } from './components/usage';
 
 @Component({
-  standalone: true,
   imports: [Header, Installation, Demo, Usage, Footer],
   selector: 'demo-root',
   template: `

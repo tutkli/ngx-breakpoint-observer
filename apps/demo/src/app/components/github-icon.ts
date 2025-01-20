@@ -2,7 +2,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
   selector: 'demo-github-icon',
-  standalone: true,
   template: `
     <svg
       role="img"

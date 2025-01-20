@@ -1,5 +1,5 @@
-import { computed, type Signal } from '@angular/core';
-import { observeMediaQuery } from './observe-media-query';
+import { computed, Signal } from '@angular/core';
+import { injectMediaQuery } from './inject-media-query';
 import {
   Breakpoints,
   MaybeSignalOrGetter,
@@ -8,16 +8,16 @@ import {
 import { defaultWindow, increaseWithUnit, toValue } from './utils';
 
 /**
- * **@deprecated** Use `injectBreakpoints` instead.
- *
- * This function will be removed in version `4.0.0`.
- *
  * Reactive viewport breakpoints.
  *
- * @param breakpoints
- * @param options
+ * This function provides a set of reactive utilities to handle viewport breakpoints.
+ * It includes shortcut methods like `greaterOrEqual`, `smallerOrEqual`, `between`, etc.
+ *
+ * @param breakpoints A map of breakpoint names and their corresponding values.
+ * @param options Configuration options such as window and strategy.
+ * @returns An object with breakpoint utilities and shortcut methods.
  */
-export function observeBreakpoints<K extends string>(
+export function injectBreakpoints<K extends string>(
   breakpoints: Breakpoints<K>,
   options: ObserveBreakpointsOptions = {}
 ) {
@@ -44,11 +44,11 @@ export function observeBreakpoints<K extends string>(
   }
 
   const greaterOrEqual = (k: MaybeSignalOrGetter<K>): Signal<boolean> => {
-    return observeMediaQuery(() => `(min-width: ${getValue(k)})`, options);
+    return injectMediaQuery(() => `(min-width: ${getValue(k)})`, options);
   };
 
   const smallerOrEqual = (k: MaybeSignalOrGetter<K>): Signal<boolean> => {
-    return observeMediaQuery(() => `(max-width: ${getValue(k)})`, options);
+    return injectMediaQuery(() => `(max-width: ${getValue(k)})`, options);
   };
 
   function current() {
@@ -74,19 +74,19 @@ export function observeBreakpoints<K extends string>(
     greaterOrEqual,
     smallerOrEqual,
     greater(k: MaybeSignalOrGetter<K>) {
-      return observeMediaQuery(
+      return injectMediaQuery(
         () => `(min-width: ${getValue(k, 0.1)})`,
         options
       );
     },
     smaller(k: MaybeSignalOrGetter<K>) {
-      return observeMediaQuery(
+      return injectMediaQuery(
         () => `(max-width: ${getValue(k, -0.1)})`,
         options
       );
     },
     between(a: MaybeSignalOrGetter<K>, b: MaybeSignalOrGetter<K>) {
-      return observeMediaQuery(
+      return injectMediaQuery(
         () =>
           `(min-width: ${getValue(a)}) and (max-width: ${getValue(b, -0.1)})`,
         options
